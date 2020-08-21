@@ -1,30 +1,22 @@
 import React from 'react';
-import { Comment, Header, Rating, Divider } from 'semantic-ui-react';
+import StarRating from './StarRating';
 
 const Reviews = ({ ratingsAndReviews }) => {
   return (
-    <Comment.Group>
-      <Header as='h3' dividing>
-        Reviews
-      </Header>
+    <div>
+      <h3 className='review__header'>Reviews</h3>
       {ratingsAndReviews.map(({ review, name, rating, date }, index) => (
-        <Comment key={index}>
-          <Comment.Content>
-            <Comment.Author as='span'>{name}</Comment.Author>
-            <Rating
-              maxRating='5'
-              icon='star'
-              size='tiny'
-              disabled
-              rating={rating}
-            />
-            <Comment.Metadata>{date}</Comment.Metadata>
-            <Comment.Text>{review}</Comment.Text>
-            <Divider />
-          </Comment.Content>
-        </Comment>
+        <div key={index} className='review'>
+          <div className='review__details'>
+            <div className='review__author'>{name}</div>
+            <p className='review__date'>{date}</p>
+            <StarRating readonly value={rating} size={6} />
+          </div>
+          <p className='review__text'>{review}</p>
+          <hr />
+        </div>
       ))}
-    </Comment.Group>
+    </div>
   );
 };
 
