@@ -13,16 +13,23 @@ import Reviews from './Reviews';
 
 function Product() {
   const initialValues = [
-    { rating: 4, review: 'Very nice carpet.', name: 'Mehmet' },
+    {
+      rating: 4,
+      review: 'Very nice carpet.',
+      name: 'Mehmet',
+      date: '5/8/2020',
+    },
     {
       rating: 5,
       review: 'Excellent.',
       name: 'Carla',
+      date: '5/10/2020',
     },
     {
       rating: 1,
       review: 'Most expensive carpet that I have seen ever,Maaaan.',
       name: 'Jan',
+      date: '7/10/2020',
     },
   ];
   const [visible, setVisible] = useState(false);
@@ -40,7 +47,10 @@ function Product() {
   const avarage = (totalRating / ratingsAndReviews.length || 0).toFixed(1);
 
   function addNewRatingAndReview() {
-    setRatingsAndReviews([{ rating, review, name }, ...ratingsAndReviews]);
+    setRatingsAndReviews([
+      { rating, review, name, date: new Date().toLocaleDateString('en-US') },
+      ...ratingsAndReviews,
+    ]);
     setVisible(false);
     setReview('');
     setRating(0);

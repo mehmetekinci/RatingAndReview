@@ -7,19 +7,18 @@ const Reviews = ({ ratingsAndReviews }) => {
       <Header as='h3' dividing>
         Reviews
       </Header>
-      {ratingsAndReviews.map(({ review, name, rating }, index) => (
+      {ratingsAndReviews.map(({ review, name, rating, date }, index) => (
         <Comment key={index}>
           <Comment.Content>
             <Comment.Author as='span'>{name}</Comment.Author>
-            <Comment.Metadata>
-              <Rating
-                maxRating='5'
-                icon='star'
-                size='tiny'
-                disabled
-                rating={rating}
-              />
-            </Comment.Metadata>
+            <Rating
+              maxRating='5'
+              icon='star'
+              size='tiny'
+              disabled
+              rating={rating}
+            />
+            <Comment.Metadata>{date}</Comment.Metadata>
             <Comment.Text>{review}</Comment.Text>
             <Divider />
           </Comment.Content>
